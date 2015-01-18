@@ -2,7 +2,7 @@ package ir.assignments.one.d;
 
 import ir.assignments.one.a.Frequency;
 import ir.assignments.one.a.Utilities;
-
+import ir.assignments.one.b.WordFrequencyCounter;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,9 +43,27 @@ public class PalindromeFrequencyCounter {
 	 * @return A list of palindrome frequencies, ordered by decreasing frequency.
 	 */
 	private static List<Frequency> computePalindromeFrequencies(ArrayList<String> words) {
-		// TODO Write body!
+		List<String> palindromes = new ArrayList<String>();
+		for ( int i = 0; i<words.size();i++){
+			if ( isPalindrome(words.get(i))){
+				palindromes.add(words.get(i));
+
+			}
+		}
+
+
 		// You will likely want to create helper methods / classes to help implement this functionality
-		return null;
+		return WordFrequencyCounter.computeWordFrequencies(palindromes);
+	}
+
+	private static boolean isPalindrome(String word){
+		int len = word.length();
+		for (int i = 0; i<word.length()/2;i++){
+			if (word.charAt(i) != word.charAt(len-1-i) ){
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	/**
