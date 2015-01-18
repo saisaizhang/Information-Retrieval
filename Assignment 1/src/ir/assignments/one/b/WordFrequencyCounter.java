@@ -3,8 +3,8 @@ package ir.assignments.one.b;
 import ir.assignments.one.a.Frequency;
 import ir.assignments.one.a.Utilities;
 
+import java.util.*;
 import java.io.File;
-import java.util.List;
 
 /**
  * Counts the total number of words and their frequencies in a text file.
@@ -43,9 +43,20 @@ public final class WordFrequencyCounter {
 	 * @return A list of word frequencies, ordered by decreasing frequency.
 	 */
 	public static List<Frequency> computeWordFrequencies(List<String> words) {
-		// TODO Write body!
-		return null;
+
+		HashMap<String,Frequency> counter = new HashMap<String, Frequency>();
+		for (String word: words) {
+			Frequency freq = counter.get(word);
+			freq = (freq == null) ? new Frequency(word,1) : new Frequency(word,freq.getFrequency()+1);
+			counter.put(word, freq);
+		}
+		List<Frequency> counterList = new ArrayList<Frequency>(counter.values());
+		Collections.sort(counterList,Collections.reverseOrder(Frequency.FrequencyComparator));
+		return counterList;
+
+
 	}
+
 	
 	/**
 	 * Runs the word frequency counter. The input should be the path to a text file.

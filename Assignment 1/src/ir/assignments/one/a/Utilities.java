@@ -118,7 +118,7 @@ public class Utilities {
 		}
 		System.out.println("Total item count: "+totalCount);
 		System.out.println("Unique item count: "+uniqueCount);
-		System.out.println("%n");
+		System.out.println("\n");
 
 		String word = new String();
 		int count = 0;
@@ -126,9 +126,9 @@ public class Utilities {
 			Frequency one = frequencies.get(i);
 			word= one.getText();
 			count = one.getFrequency();
-			System.out.format("%09s",word);
+			System.out.format("%s",word);
 			System.out.print("\t");
-			System.out.format("%d",count);
+			System.out.format("%d%n",count);
 
 		}
 	}
